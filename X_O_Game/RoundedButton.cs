@@ -15,6 +15,8 @@ namespace X_O_Game
         private int bSize = 0;
         private int bRedius = 50;
         private Color bColor = Color.DarkRed;
+        private Color OnHoverColor = Color.LightGray;
+        private Color BaseColor = Color.White;
 
         [Category("Bika Setting")]
         public int BSize { get => bSize; set { bSize = value; this.Invalidate(); }  }
@@ -28,6 +30,10 @@ namespace X_O_Game
             get { return this.BackColor; }
             set { this.BackColor = value; }
         }
+        [Category("Bika Setting")]
+        public Color OnHoverColor1 { get => OnHoverColor; set { OnHoverColor = value; this.Invalidate(); } }
+        [Category("Bika Setting")]
+        public Color ReturnHoverColor { get => BaseColor; set { BaseColor = value; this.Invalidate(); } }
         [Category("Bika Setting")]
         public Color TextColor
         {
@@ -97,6 +103,16 @@ namespace X_O_Game
                     }
                 }
             }
+        }
+
+        protected override void OnMouseHover(EventArgs e)
+        {
+            this.BackColor = OnHoverColor;
+        }
+
+        protected override void OnMouseLeave(EventArgs e)
+        {
+            this.BackColor = BaseColor;
         }
     }
 }

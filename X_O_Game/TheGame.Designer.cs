@@ -41,11 +41,14 @@ namespace X_O_Game
             this.p7 = new System.Windows.Forms.Panel();
             this.p8 = new System.Windows.Forms.Panel();
             this.p9 = new System.Windows.Forms.Panel();
+            this.btnRestart = new X_O_Game.RoundedButton();
+            this.pnl_Up.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnl_Up
             // 
+            this.pnl_Up.Controls.Add(this.btnRestart);
             this.pnl_Up.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnl_Up.Location = new System.Drawing.Point(0, 0);
             this.pnl_Up.Name = "pnl_Up";
@@ -167,6 +170,27 @@ namespace X_O_Game
             this.p9.TabIndex = 0;
             this.p9.Click += new System.EventHandler(this.Clicks);
             // 
+            // btnRestart
+            // 
+            this.btnRestart.BackColor = System.Drawing.Color.White;
+            this.btnRestart.BackgroundColor = System.Drawing.Color.White;
+            this.btnRestart.BColor = System.Drawing.Color.DarkRed;
+            this.btnRestart.BRedius = 50;
+            this.btnRestart.BSize = 0;
+            this.btnRestart.FlatAppearance.BorderSize = 0;
+            this.btnRestart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRestart.Font = new System.Drawing.Font("Ink Free", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRestart.ForeColor = System.Drawing.Color.Black;
+            this.btnRestart.Location = new System.Drawing.Point(12, 25);
+            this.btnRestart.Name = "btnRestart";
+            this.btnRestart.OnHoverColor1 = System.Drawing.Color.LightGray;
+            this.btnRestart.ReturnHoverColor = System.Drawing.Color.White;
+            this.btnRestart.Size = new System.Drawing.Size(134, 47);
+            this.btnRestart.TabIndex = 0;
+            this.btnRestart.Text = "Restart";
+            this.btnRestart.TextColor = System.Drawing.Color.Black;
+            this.btnRestart.UseVisualStyleBackColor = false;
+            // 
             // TheGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -181,6 +205,7 @@ namespace X_O_Game
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TheGame";
             this.Load += new System.EventHandler(this.TheGame_Load);
+            this.pnl_Up.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -200,5 +225,6 @@ namespace X_O_Game
         private System.Windows.Forms.Panel p7;
         private System.Windows.Forms.Panel p8;
         private System.Windows.Forms.Panel p9;
+        private RoundedButton btnRestart;
     }
 }

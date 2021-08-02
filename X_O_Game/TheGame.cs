@@ -16,6 +16,7 @@ namespace X_O_Game
         int[] O = new int[5];
         int PCount = 0;
         string nextPlayer = "X";
+        bool Playable = true;
 
         private void AddLabelToPanel(string Player, Panel P)
         {
@@ -51,38 +52,58 @@ namespace X_O_Game
 
         private void Clicks(object sender, EventArgs e)
         {
-            var P = sender as Panel;
-
-            int name = Convert.ToInt32(P.Name.Substring(1));
-
-            AddLabelToPanel(nextPlayer, sender as Panel);
-
-            if (nextPlayer == "X")
+            if (Playable)
             {
-                nextPlayer = "O";
-                X[Convert.ToInt32(Math.Ceiling(Convert.ToDecimal(PCount) / 2))] = name;
-            }
-            else
-            {
-                nextPlayer = "X";
-                O[Convert.ToInt32(Math.Ceiling(Convert.ToDecimal(PCount) / 2))] = name;
-            }
+                var P = sender as Panel;
 
-            if(PCount >= 4)
-            {
-                bool win = false;
+                int name = Convert.ToInt32(P.Name.Substring(1));
 
-                int i = 0;
-                while(!win && i <= Math.Ceiling(Convert.ToDecimal(PCount) / 2))
+                AddLabelToPanel(nextPlayer, sender as Panel);
+
+                if (nextPlayer == "X")
                 {
-                    win = CheckWin(X[i], X);
-                    i++;
+                    nextPlayer = "O";
+                    X[Convert.ToInt32(Math.Ceiling(Convert.ToDecimal(PCount) / 2))] = name;
+                }
+                else
+                {
+                    nextPlayer = "X";
+                    O[Convert.ToInt32(Math.Ceiling(Convert.ToDecimal(PCount) / 2))] = name;
                 }
 
-                if (win) MessageBox.Show("x Won !!!");
-            }
+                if (PCount >= 4)
+                {
+                    bool win = false;
 
-            PCount++;
+                    int i = 0;
+                    while (!win && i <= Math.Ceiling(Convert.ToDecimal(PCount) / 2))
+                    {
+                        win = CheckWin(X[i], X);
+                        i++;
+                    }
+
+                    if (win)
+                    {
+                        Playable = false;
+
+                        if (nextPlayer == "O") // X Wins
+                        {
+
+                        }
+                        if (nextPlayer == "X") // O Wins
+                        {
+
+                        }
+                    }
+                }
+
+                if(PCount >= 9) // Game Ended
+                {
+                    
+                }
+
+                else PCount++;
+            }
         }
 
         private bool CheckWin(int name, int[] arr)
